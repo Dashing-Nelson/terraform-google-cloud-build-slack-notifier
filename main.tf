@@ -164,7 +164,7 @@ resource "google_storage_bucket_object" "cloud_build_notifier_config" {
 resource "random_id" "cloud_build_notifier_service" {
   # We use a keeper here so we can force cloud run to redeploy on script change.
   keepers = {
-    script_hash = google_storage_bucket_object.cloud_build_notifier_config.md5hash
+    script_hash         = google_storage_bucket_object.cloud_build_notifier_config.md5hash
     slack_template_hash = google_storage_bucket_object.slack_template.md5hash
   }
 
